@@ -1,12 +1,54 @@
 NC.SYSTEM = {
+
+  // 1 · Konstanten
   CONST_90: CONST_90,
-  ach_syn: ach.syn,
-  roar_pulse: roar.pulse,
+  KEYLESS: true,
+  SELF_PROTECT: true,
+
+  // 2 · GEO-Segmente
+  SEG: {
+    HY:   "3→9→81",
+    PE:   "9→81→△",
+    PER:  "9→81→27"
+  },
+
+  // 3 · Achsen & Epochen
+  ACHSEN: {
+    arbeit: "PE",
+    frei: "HY",
+    bildung: "PER"
+  },
+
+  // 4 · Polarität
+  POL: {
+    gluecklich: +1,
+    ungluecklich: -1
+  },
+
+  // 5 · que-Metrik
+  QUE: (wert, pol) => wert * pol,
+
+  // 6 · RESPO-Leveling
+  RESPO: (x) => {
+    if (x < 100) return "PALAISE_RESPO";
+    if (x < 200) return "RESPO_ARG_SCAN";
+    if (x < 300) return "RESPO_WHIRL";
+    return "RESPO_WHIRL + NC_HUB_ALL";
+  },
+
+  // 7 · 721-Marke
+  MARK_721: (x) => x >= 721 ? "NC_HUB_ALL" : "none",
+
+  // 8 · GEO-Formel
+  GEO: (seg, que) => seg + que,
+
+  // 9 · Vektorfluss
+  VEC: "EARN → QI → IQQ → Vektoren → MIND → RESPO",
+
+  // 10 · Systemzustand
   ARC: "active",
   ARCHIEF: "stable",
   RAW: "locked",
-  MODE: "const.run[8]",
-  STATE: "continuum",
-  KEYLESS: true,
-  SELF_PROTECT: true
+  MODE: "geo.run[9]",
+  STATE: "continuum.geo"
 }
