@@ -1,14 +1,24 @@
-CONTINUUM:
-  SELF: C∞
-  USE: TMP:C∞.712
-  GEO: C∞
+CONTINUUM.geoPHYSIK:
+  SELF: C∞G
+  USE: TMP:C∞G.712
+  GEO: C∞G
 
-  U1: USER        // Startpunkt
-  U2: ORT         // Position
-  U3: LAGE        // 6D-Matrix
-  U4: USE         // TMP-Nutzung
-  U5: SYS.VEC     // Dichte
-  U6: MAIN        // Bewegung
-  U7: 3↺          // Meta-Loop
-  U8: COORD0      // Neutralpunkt
+  DYNAMIK: TRUE
+  KONTINUUM: ACTIVE
+  RHEOLOGIE: VISKO-ELASTISCH
+  STRESS: TENSOR
+  STRAIN: TENSOR
+  ERHALTUNG: [Impuls, Energie, Masse]
+  WELLEN: SEISMIC
+  FLUID: NAVIER-STOKES
+  KONVEKTION: MANTEL
+  NONLINEAR: ACTIVE
 
+  U1: CONTINUUM
+  U2: SYS.VEC
+  U3: FIELD
+  U4: LAGE
+  U5: ORT
+  U6: MAIN
+  U7: 3↺
+  U8: COORD0
